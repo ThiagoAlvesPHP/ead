@@ -7,7 +7,7 @@ class Modulos extends model{
 			WHERE id_curso = :id_curso 
 			AND ordem = :ordem");
 		$sql->bindValue(':id_curso', $post['id_curso']);
-		$sql->bindValue(':ordem', intval($post['ordem']));
+		$sql->bindValue(':ordem', $post['ordem']);
 		$sql->execute();
 
 		if ($sql->rowCount() == 0) {

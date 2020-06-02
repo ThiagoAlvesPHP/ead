@@ -109,4 +109,20 @@ class adminController extends controller {
 		}
 	}
 
+	public function curso_aulas($id_modulo){
+		if (!empty($id_modulo)) {
+			$dados = array();
+			$m = new Modulos();
+			$c = new Cursos();
+
+			$post = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+			$dados['curso'] = $c->get($id_modulo);
+			$dados['list'] = $m->getAllCurso($id_modulo);
+			$this->loadTemplateAdmin('admin_curso_aulas', $dados);
+		} else {
+			header('Location: '.BASE.'admin');
+		}
+	}
+
 }

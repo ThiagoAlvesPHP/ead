@@ -1,9 +1,9 @@
 <h1><?=$curso['curso']; ?></h1>
-<h2>Modulos</h2>
+<h2>Modulo: </h2>
 <hr>
 <div class="row">
 	<div class="col-sm-5">
-		<h3>Cadastrar Modulo</h3>
+		<h3>Cadastrar Aula</h3>
 		<?php if (!empty($error)): ?>
 			<div class="alert alert-danger">Ordem já Cadastrada!</div>
 		<?php endif; ?>
