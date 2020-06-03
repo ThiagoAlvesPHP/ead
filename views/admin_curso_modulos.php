@@ -10,8 +10,8 @@
 		<form method="POST">
 			<label>Modulo</label>
 			<input type="text" name="modulo" class="form-control" required="">
-			<label>Ordem</label>
-			<input type="text" name="ordem" class="form-control" required="">
+			<label>Ordem <small>(Apenas números)</small></label>
+			<input type="text" name="ordem" class="form-control" required="" placeholder="Ex: 1 ou 1.2">
 			<br>
 			<button class="btn btn-success">Cadastrar</button>
 		</form>

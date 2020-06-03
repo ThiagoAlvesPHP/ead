@@ -9,7 +9,7 @@
 		<form method="POST" enctype="multipart/form-data">
 			<label>Curso</label>
 			<input type="text" name="curso" class="form-control" required="">
-			<label>Imagem <span>(Formato PNG - 500 x 500)</span></label>
+			<label>Imagem <small>(Formato PNG - 500 x 500)</small></label>
 			<input type="file" name="imagem" class="form-control" required="">
 			<label>Valor</label>
 			<input type="text" name="valor" class="form-control money" required="">

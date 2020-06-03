@@ -7,11 +7,13 @@
 		<?php if (!empty($error)): ?>
 			<div class="alert alert-danger">Ordem já Cadastrada!</div>
 		<?php endif; ?>
-		<form method="POST">
-			<label>Modulo</label>
+		<form method="POST" enctype="multipart/form-data">
+			<label>Aula <small>(Link)</small></label>
 			<input type="text" name="modulo" class="form-control" required="">
-			<label>Ordem</label>
-			<input type="text" name="ordem" class="form-control" required="">
+			<label>Arquivo PDF <small>(Formato PDF)</small></label>
+			<input type="file" name="imagem" class="form-control" required="">
+			<label>Ordem <small>(Apenas números)</small></label>
+			<input type="text" name="ordem" class="form-control" required="" placeholder="Ex: 1 ou 1.2">
 			<br>
 			<button class="btn btn-success">Cadastrar</button>
 		</form>

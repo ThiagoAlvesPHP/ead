@@ -7,7 +7,7 @@
 <link href="<?=BASE; ?>assets/img/favicon.png" rel="icon">
 <link rel="stylesheet" href="<?=BASE; ?>assets/css/bootstrap.css" type="text/css" />
 <link rel="stylesheet" href="<?=BASE; ?>assets/css/fontawesome/css/all.min.css">
-<link rel="stylesheet" href="<?=BASE; ?>/assets/css/style.css" type="text/css" />
+<link rel="stylesheet" href="<?=BASE; ?>/assets/css/admin.css" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?=BASE; ?>assets/datetime/jquery.datetimepicker.css">
 <script type="text/javascript" src="<?=BASE; ?>assets/js/jquery.min.js"></script>
 </head>
