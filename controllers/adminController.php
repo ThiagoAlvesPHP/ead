@@ -109,16 +109,48 @@ class adminController extends controller {
 		}
 	}
 
+	public function curso_modulo_edit($id_modulo){
+		if (!empty($id_modulo)) {
+			$dados = array();
+			$m = new Modulos();
+
+			$post = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+			if (!empty($post['modulo'])) {
+				$post['id'] = $id_modulo;
+				$m->up($post);
+				header('Location: '.BASE.'admin/curso_modulo_edit/'.$id_modulo);
+			}
+
+			$dados['modulo'] = $m->get($id_modulo);
+			$this->loadTemplateAdmin('admin_modulo_edit', $dados);
+		} else {
+			header('Location: '.BASE.'admin');
+		}
+	}
+
 	public function curso_aulas($id_modulo){
 		if (!empty($id_modulo)) {
 			$dados = array();
 			$m = new Modulos();
-			$c = new Cursos();
+			$a = new Aulas();
 
 			$post = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-			$dados['curso'] = $c->get($id_modulo);
-			$dados['list'] = $m->getAllCurso($id_modulo);
+			if (!empty($post['video'])) {
+				if ($_FILES['pdf']['type'] == 'application/pdf') {
+					$post['pdf'] = md5($_FILES['pdf']['tmp_name'].time().rand(0,999)).'.pdf';
+					$post['id_modulo'] = $id_modulo;
+					move_uploaded_file($_FILES['pdf']['tmp_name'], 'assets/aulas/'.$post['pdf']);
+					$a->set($post);
+					header('Location: '.BASE.'admin/curso_aulas/'.$id_modulo);
+				} else {
+					$dados['error'] = true;
+				}
+			}
+
+			$dados['modulo'] = $m->get($id_modulo);
+			$dados['list'] = $a->getAllModulo($id_modulo);
 			$this->loadTemplateAdmin('admin_curso_aulas', $dados);
 		} else {
 			header('Location: '.BASE.'admin');

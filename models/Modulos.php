@@ -30,11 +30,11 @@ class Modulos extends model{
 	}
 
 	public function get($id){
-		$sql = $this->db->prepare("SELECT * FROM modeulos WHERE id = :id");
+		$sql = $this->db->prepare("SELECT * FROM modulos WHERE id = :id");
 		$sql->bindValue(':id', $id);
 		$sql->execute();
 
-		return $sql->fetchAll(PDO::FETCH_ASSOC);
+		return $sql->fetch(PDO::FETCH_ASSOC);
 	}
 
 	public function getAllCurso($id_curso){
@@ -56,7 +56,7 @@ class Modulos extends model{
             $fields[] = "$key=:$key";
         }
         $fields = implode(', ', $fields);
-		$sql = $this->db->prepare("UPDATE cursos SET {$fields} WHERE id = :id");
+		$sql = $this->db->prepare("UPDATE modulos SET {$fields} WHERE id = :id");
 
 		foreach ($post as $key => $value) {
             $sql->bindValue(":{$key}", $value);
