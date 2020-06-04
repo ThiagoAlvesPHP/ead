@@ -50,10 +50,7 @@
 								        <h4 class="modal-title"><?=$value['titulo']; ?></h4>
 								      </div>
 								      <div class="modal-body">
-								        <video width="320" height="240" controls>
-										  <source src="<?=$value['video']; ?>" type="video/mp4">
-										  <source src="movie.ogg" type="video/ogg">
-										</video>
+								        <iframe src="https://player.vimeo.com/video/<?=$value['video']; ?>" width="100%" height="350" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 								      </div>
 								      <div class="modal-footer">
 								        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
@@ -63,7 +60,26 @@
 								</div>
 								
 							</td>
-							<td><?=$value['pdf']; ?></td>
+							<td>
+								<span class="fas fa-file-pdf" data-toggle="modal" data-target="#pdf<?=$value['id']; ?>"></span>
+
+								<div id="pdf<?=$value['id']; ?>" class="modal fade" role="dialog">
+								  <div class="modal-dialog">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal">&times;</button>
+								        <h4 class="modal-title"><?=$value['titulo']; ?></h4>
+								      </div>
+								      <div class="modal-body">
+								        <iframe src="<?=BASE.'assets/aulas/'.$value['pdf']; ?>" width="100%" height="350" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+							</td>
 							<td><?=($value['status'] == 1)?'Ativo':'Inativo'; ?></td>
 							<td><?=date('d/m/Y', strtotime($value['dt_registro'])); ?></td>
 							<td>

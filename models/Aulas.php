@@ -29,7 +29,10 @@ class Aulas extends model{
 		$a = new Alunos();
 		$array = array();
 
-		$sql = $this->db->prepare("SELECT * FROM aulas WHERE id_modulo = :id_modulo");
+		$sql = $this->db->prepare("
+			SELECT * FROM aulas 
+			WHERE id_modulo = :id_modulo 
+			ORDER BY ordem ASC");
 		$sql->bindValue(':id_modulo', $id_modulo);
 		$sql->execute();
 
