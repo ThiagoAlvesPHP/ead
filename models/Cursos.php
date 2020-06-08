@@ -39,6 +39,18 @@ class Cursos extends model{
 		return $array;	
 	}
 
+	public function getAllAtivos(){
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM cursos WHERE status = 1");
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
+		}	
+		return $array;	
+	}
+
 	public function up($post){
 		$fields = [];
         foreach ($post as $key => $value) {

@@ -83,8 +83,7 @@
 							<td><?=($value['status'] == 1)?'Ativo':'Inativo'; ?></td>
 							<td><?=date('d/m/Y', strtotime($value['dt_registro'])); ?></td>
 							<td>
-								<a href="<?=BASE.'admin/curso_modulo_edit/'.$value['id']; ?>" class="far fa-edit" title="Editar Modulo"></a> |
-								<a href="<?=BASE.'admin/curso_aulas/'.$value['id']; ?>" class="fas fa-video" title="Aulas"></a>
+								<a href="<?=BASE.'admin/curso_aula_edit/'.$value['id']; ?>" class="far fa-edit" title="Editar Aula"></a>
 							</td>
 						</tr>
 					</tbody>

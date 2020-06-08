@@ -1,10 +1,10 @@
 <?php
 class Imagem extends model{
-	/*public function img($x, $y, $caminho, $arquivo){
+	public function jpeg($x, $y, $caminho, $arquivo){
 		$largura = $x;
 		$altura = $y;
 
-		list($larguraOri, $alturaOri) = getimagesize($_FILES['image']['tmp_name']);
+		list($larguraOri, $alturaOri) = getimagesize($_FILES['imagem']['tmp_name']);
 		$ratio = $larguraOri / $alturaOri;
 		
 		if ($largura / $altura > $ratio) {
@@ -14,11 +14,11 @@ class Imagem extends model{
 		}	
 
 		$imagem_final = imagecreatetruecolor($largura, $altura);
-		$imagem_original = imagecreatefromjpeg($_FILES['image']['tmp_name']);
+		$imagem_original = imagecreatefromjpeg($_FILES['imagem']['tmp_name']);
 		imagecopyresampled($imagem_final, $imagem_original, 0, 0, 0, 0, $largura, $altura, $larguraOri, $alturaOri);
 
 		imagejpeg($imagem_final, $caminho.$arquivo, 100);
-	}*/
+	}
 
 	public function png($x, $y, $caminho, $arquivo){
 		$largura = $x;

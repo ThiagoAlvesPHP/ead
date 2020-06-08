@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Jun-2020 às 20:21
--- Versão do servidor: 10.1.37-MariaDB
--- versão do PHP: 7.2.12
+-- Tempo de geração: 08-Jun-2020 às 03:20
+-- Versão do servidor: 10.4.11-MariaDB
+-- versão do PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cursos`
+-- Banco de dados: `cursos`
 --
 
 -- --------------------------------------------------------
@@ -34,9 +33,17 @@ CREATE TABLE `alunos` (
   `foto` varchar(100) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(32) NOT NULL,
-  `status` int(11) NOT NULL,
-  `dt_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `status` int(11) NOT NULL DEFAULT 1,
+  `dt_registro` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `alunos`
+--
+
+INSERT INTO `alunos` (`id`, `nome`, `foto`, `email`, `senha`, `status`, `dt_registro`) VALUES
+(4, 'Thiago Alves', '2650f8158767d4a078550e907bae6fe1.jpeg', 'thiagoalves@albicod.com', '202cb962ac59075b964b07152d234b70', 1, '2020-06-07 22:41:18'),
+(5, 'Leidizane Brito', '46955b99e182456229d732b0818c7a43.jpeg', 'leidizane_alves@hotmail.com', '202cb962ac59075b964b07152d234b70', 1, '2020-06-07 22:41:32');
 
 -- --------------------------------------------------------
 
@@ -49,8 +56,15 @@ CREATE TABLE `aluno_curso` (
   `id_aluno` int(11) NOT NULL,
   `id_curso` int(11) NOT NULL,
   `status` int(11) NOT NULL,
-  `dt_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `dt_registro` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `aluno_curso`
+--
+
+INSERT INTO `aluno_curso` (`id`, `id_aluno`, `id_curso`, `status`, `dt_registro`) VALUES
+(1, 5, 3, 3, '2020-06-08 00:45:39');
 
 -- --------------------------------------------------------
 
@@ -65,8 +79,8 @@ CREATE TABLE `aulas` (
   `video` varchar(100) NOT NULL,
   `pdf` varchar(100) NOT NULL,
   `ordem` float NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  `dt_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `status` int(11) NOT NULL DEFAULT 1,
+  `dt_registro` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -74,8 +88,10 @@ CREATE TABLE `aulas` (
 --
 
 INSERT INTO `aulas` (`id`, `id_modulo`, `titulo`, `video`, `pdf`, `ordem`, `status`, `dt_registro`) VALUES
-(2, 1, 'Conhecendo um pouco da historia', 'https://vimeo.com/425861668', '0beb7bbdb950894f7f57149892a3ad36.pdf', 1, 1, '2020-06-04 14:59:21'),
-(3, 1, 'Conhecendo um pouco da historia - 2ª parte', 'https://vimeo.com/425862135', '6ea924bc9cee16bb2232003f52726e97.pdf', 2, 1, '2020-06-04 15:00:07');
+(2, 1, 'Conhecendo um pouco da historia', '425861668', '61a2a0e99630d2990096094f28aeb23e.pdf', 1, 1, '2020-06-04 14:59:21'),
+(3, 1, 'Conhecendo um pouco da historia - 2ª parte', '425862135', 'f4c5b477d9ed73ea1d9fe7a7067c4e0b.pdf', 2, 1, '2020-06-04 15:00:07'),
+(4, 4, 'Teste de Aula', '425862039', '61c31868c3ddff182aeabb6e681caac8.pdf', 1, 1, '2020-06-04 21:49:35'),
+(5, 1, 'Outra aula', '425862039', '01948fac130c46296947708211af65e4.pdf', 1.2, 1, '2020-06-04 23:03:42');
 
 -- --------------------------------------------------------
 
@@ -88,8 +104,8 @@ CREATE TABLE `cursos` (
   `curso` varchar(100) NOT NULL,
   `imagem` varchar(100) NOT NULL,
   `valor` float NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  `dt_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `status` int(11) NOT NULL DEFAULT 1,
+  `dt_registro` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -113,8 +129,8 @@ CREATE TABLE `modulos` (
   `id_curso` int(11) NOT NULL,
   `modulo` varchar(100) NOT NULL,
   `ordem` float NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  `dt_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `status` int(11) NOT NULL DEFAULT 1,
+  `dt_registro` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -122,9 +138,9 @@ CREATE TABLE `modulos` (
 --
 
 INSERT INTO `modulos` (`id`, `id_curso`, `modulo`, `ordem`, `status`, `dt_registro`) VALUES
-(1, 3, 'Historia da Música', 1, 1, '2020-06-01 20:53:23'),
-(3, 3, 'Primeiros Passos Teoricos', 2, 1, '2020-06-01 21:10:59'),
-(4, 3, 'Introdução a Música', 1.1, 1, '2020-06-02 11:51:44');
+(1, 3, 'Modulo 1', 1, 1, '2020-06-01 20:53:23'),
+(3, 3, 'Modulo 3', 2, 1, '2020-06-01 21:10:59'),
+(4, 3, 'Modulo 2', 1.1, 1, '2020-06-02 11:51:44');
 
 -- --------------------------------------------------------
 
@@ -137,9 +153,9 @@ CREATE TABLE `usuarios` (
   `nome` varchar(100) NOT NULL,
   `login` varchar(100) NOT NULL,
   `senha` varchar(32) NOT NULL,
-  `nivel` int(11) NOT NULL DEFAULT '1',
+  `nivel` int(11) NOT NULL DEFAULT 1,
   `status` int(11) NOT NULL,
-  `dt_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `dt_registro` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -150,81 +166,81 @@ INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`, `nivel`, `status`, `dt_r
 (1, 'System', 'admin', '202cb962ac59075b964b07152d234b70', 1, 1, '2020-06-01 11:28:34');
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `alunos`
+-- Índices para tabela `alunos`
 --
 ALTER TABLE `alunos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `aluno_curso`
+-- Índices para tabela `aluno_curso`
 --
 ALTER TABLE `aluno_curso`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `aulas`
+-- Índices para tabela `aulas`
 --
 ALTER TABLE `aulas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cursos`
+-- Índices para tabela `cursos`
 --
 ALTER TABLE `cursos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `modulos`
+-- Índices para tabela `modulos`
 --
 ALTER TABLE `modulos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usuarios`
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `alunos`
+-- AUTO_INCREMENT de tabela `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `aluno_curso`
+-- AUTO_INCREMENT de tabela `aluno_curso`
 --
 ALTER TABLE `aluno_curso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `aulas`
+-- AUTO_INCREMENT de tabela `aulas`
 --
 ALTER TABLE `aulas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `cursos`
+-- AUTO_INCREMENT de tabela `cursos`
 --
 ALTER TABLE `cursos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `modulos`
+-- AUTO_INCREMENT de tabela `modulos`
 --
 ALTER TABLE `modulos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

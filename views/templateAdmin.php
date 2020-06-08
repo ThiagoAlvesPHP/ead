@@ -27,6 +27,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="<?=BASE.'admin'; ?>">Dashboard</a></li>
         <li><a href="<?=BASE.'admin/cursos'; ?>">Cursos</a></li>
+        <li><a href="<?=BASE.'admin/alunos'; ?>">Alunos</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
